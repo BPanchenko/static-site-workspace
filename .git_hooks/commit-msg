@@ -1,0 +1,16 @@
+#!/bin/sh
+COMMIT_MSG="$(cat $1)"
+
+# Create a regex for a conventional commit.
+convetional_commit_regex="^(Add|Cut|Fix|Def|Init|Impl|Bump|Make|Refact|Reformat|Optimize|Doc|Merge|UAT):.+$"
+
+# Check the message, if we match, all good baby.
+if [[ "$COMMIT_MSG" =~ $convetional_commit_regex ]]; then
+    echo -e "\e[32mCommit message meets Conventional Commit standards...\e[0m"
+    exit 0
+else
+    echo -e "\e[31mThe commit message does not meet the Conventional Commit standard\e[0m"
+    echo "An example of a valid message is: "
+    echo "  Add: `Button` component"
+    exit 1
+fi

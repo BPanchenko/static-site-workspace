@@ -1,0 +1,1 @@
+console.log("Core of the static site")
