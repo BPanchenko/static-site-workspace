@@ -1,0 +1,33 @@
+{
+	"name": "static-site",
+	"version": "0.1.0",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "cross-env NODE_ENV=production node ./.kernel/builder",
+		"dev": "node --watch ./.kernel/watcher && node ./.kernel/server",
+		"prepare": "git config core.hooksPath .git_hooks || echo 'Not in a git repo'"
+	},
+	"devDependencies": {
+		"@bpanchenko/uikit": "4.26.77",
+		"@rollup/plugin-node-resolve": "15.2.3",
+		"@rollup/plugin-terser": "0.4.4",
+		"cross-env": "7.0.3",
+		"date-format": "4.0.14",
+		"express": "4.19.2",
+		"htmlnano": "2.1.1",
+		"livereload": "0.9.3",
+		"make-dir": "5.0.0",
+		"node-color-log": "12.0.1",
+		"port-authority": "2.0.1",
+		"postcss-import-alias": "0.0.1",
+		"posthtml": "0.16.6",
+		"posthtml-beautify": "0.7.0",
+		"posthtml-extend": "0.6.5",
+		"posthtml-include": "2.0.1",
+		"purgecss": "6.0.0",
+		"rollup": "4.19.0",
+		"watcher": "2.3.1",
+		"xmlbuilder2": "3.1.1"
+	}
+}

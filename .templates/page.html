@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>{{ title }}</title>
+
+		<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+		<slot name="links">
+			<link rel="modulepreload" href="/assets/core.js" />
+		</slot>
+		
+		<slot name="stylesheets">
+			<link href="/assets/design.css" rel="stylesheet" type="text/css">
+		</slot>
+
+		<slot name="scripts">
+			<script src="/assets/core.mjs" type="module"></script>
+		</slot>
+
+		<if condition="isProd !== true">
+			<script src="{{ livereloadScriptURL }}"></script>
+		</if>
+	</head>
+	<body itemscope itemtype="http://schema.org/WebPage">
+		<div class="o-container">
+
+			<if condition="breadcrumb.length > 0">
+				<nav class="o-breadcrumb u-margin-sm-top" itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+					<span class="o-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+						<a itemprop="item" href="/">
+							<span itemprop="name">Главная</span>
+						</a>
+						<meta itemprop="position" content="1" />
+					</span>
+					<each loop="name, index in breadcrumbs">
+						<span class="o-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+							<span itemprop="name">{{ name }}</span>
+							<meta itemprop="position" content="3" />
+						</span>
+					</each>
+				</nav>
+			</if>
+
+			<hr>
+			<main id="content">
+				<slot name="content"></slot>
+			</main>
+			<hr>
+
+			<footer role="contentinfo" class="u-margin-large-top"></footer>
+		</div>
+	</body>
+</html>
